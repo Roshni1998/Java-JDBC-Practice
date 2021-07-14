@@ -3,6 +3,7 @@ package com.bridgelabz;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,6 +41,18 @@ public class EmployeePayrollServiceTest {
         employeePayrollService.updateEmployeeSalary("Terrisa", 2000000.00);
         boolean result = employeePayrollService.checkEmployeePayrollInSyncWithDB("Terrisa");
         Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void givenDateRange_WhenRetrieved_ShouldMatchEmployeeCount(){
+        EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+        employeePayrollService.readEmployeePayrollData(DB_IO);
+        LocalDate startDate = LocalDate.of(2021,04,01);
+        LocalDate endDate = LocalDate.now();
+        List<EmployeePayrollData> employeePayrollData =
+                employeePayrollService.readEmployeePayrollForDateRange(DB_IO, startDate, endDate);
+        Assertions.assertEquals(3, employeePayrollData.size());
+
     }
 }
 
