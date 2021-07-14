@@ -64,7 +64,7 @@ public class EmployeePayrollServiceTest {
     }
 
     @Test
-    public void givenNewEmployee_WhenAdded_ShouldSyncWithDB(){
+    public void givenNewEmployee_WhenAdded_ShouldSyncWithDataBase(){
         EmployeePayrollService employeePayrollService = new EmployeePayrollService();
         employeePayrollService.readEmployeePayrollData(DB_IO);
         employeePayrollService.addEmployeeToPayroll("Maria", 5000000.00, LocalDate.now(), "F");
